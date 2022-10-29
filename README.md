@@ -1,10 +1,15 @@
 # lab4-acit4640
 
-To test out this lab we need two VMs on any cloud service provider, I pesonally chose Digitalocean. 
-The VMs I created were Ubuntu 22.04 and Roxy 9/8.
-Before setting up your VM, make sure you have an ssh key for the VMs.
+To test out this lab we need two VMs on any cloud service provider, I pesonally chose Digitalocean.  
+
+The VMs I created were Ubuntu 22.04 and Roxy 9/8.  
+
+Before setting up your VM, make sure you have an ssh key for the VMs.  
+
 You can simply run ```ssh-keygen``` on your linux Environment (Ubuntu 22.04) to create the key pair.
-Now you should be able to see two files id_rsa and id_rsa.pub in .ssh directory.
+
+Now you should be able to see two files id_rsa and id_rsa.pub in .ssh directory.  
+
 We need to simply copy the content of the public key (id_rsa.pub) to digitalocean ssh key creation step to be able to ssh into our vms. 
 
 After setting up the VMs successfully you need to:
