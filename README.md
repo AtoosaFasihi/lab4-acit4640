@@ -1,1 +1,21 @@
 # lab4-acit4640
+
+To test out this lab we need two VMs on any cloud service provider, I pesonally chose Digitalocean. 
+The VMs I created were Ubuntu 22.04 and Roxy 9/8.
+Before setting up your VM, make sure you have an ssh key for the VMs.
+You can simply run ```ssh-keygen``` on your linux Environment (Ubuntu 22.04) to create the key pair.
+Now you should be able to see two files id_rsa and id_rsa.pub in .ssh directory.
+We need to simply copy the content of the public key (id_rsa.pub) to digitalocean ssh key creation step to be able to ssh into our vms. 
+
+After setting up the VMs successfully you need to:
+
+  1. clone this repo
+  2. Setup your ansible.cfg file and any inventory files
+  3. you can test out that all the set ups are correst by running the command ```ansible-inventory --graph```: which should look like something like below. 
+  ![Capture](https://user-images.githubusercontent.com/71790429/198816010-d0a55553-1cfd-40e5-b120-8c9833931b22.JPG)
+  
+  You can see more details about the VMs if you run ```ansible-inventory --graph --vars``` as shown below:
+  
+    ![Cap](https://user-images.githubusercontent.com/71790429/198816068-3fd5c780-dca1-4f27-9317-0bce14578772.JPG)
+
+  4. To test out the ansible playbook you can run ```ansible-playbook playbook.yml```  
