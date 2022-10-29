@@ -25,5 +25,9 @@ After setting up the VMs successfully you need to:
   You can see more details about the VMs if you run ```ansible-inventory --graph --vars``` as shown below:
   
   ![Cap](https://user-images.githubusercontent.com/71790429/198816219-8cf3af0c-e130-4a47-b002-1d0fbdf2d9de.JPG)
+  
+   You can also ping the servers by running ```ansible -m ping -u root all```
+   
+   ![ure](https://user-images.githubusercontent.com/71790429/198816504-55706655-c1f1-4e54-8b8d-03186d8bfe6c.JPG)
 
   * To test out the ansible playbook you can run ```ansible-playbook playbook.yml```  
