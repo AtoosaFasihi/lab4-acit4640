@@ -1,0 +1,69 @@
+---
+
+- hosts: all
+  become: true
+  vars_files:
+    - /home/atoosa/lab4-4640/lab4-acit4640/default.yml
+
+  tasks:
+    - name: Make sure we have a 'wheel' group
+      group:
+        name: wheel
+        state: present
+
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: '/usr/sbin/visudo -cf %s'
+
+    # User + key Setup
+    - name: Create a new regular user with sudo privileges
+      user:
+        name: "{{ create_user }}"
+        state: present
+        groups: wheel
+        append: true
+        create_home: true
+        shell: /bin/bash
+
+    - name: Check if file already exists
+      command: ls /home
+      register: file_exists
+      ignore_errors: yes
+
+    - name: create file for users 
+      file:
+        path: /home
+        state: touch
+      when: file_exists is failed
+
+    - name: show message if file exists
+      debug:
+        msg: The user file already exists.
+      when: file_exists is succeeded
+
+    - name: Set authorized key for remote user
+      authorized_key:
+        user: "{{ create_user }}"
+        state: present
+        key: "{{ copy_local_key }}"
+    
+    - name: Installing podman
+      dnf:
+        name: podman
+        state: present
+
+    - name: Pull httpd:2-alpine image from dockerhub
+      podman_image:
+        name: docker.io/httpd
+        tag: 2-alpine
+
+    - name: Running httpd image
+      containers.podman.podman_container:
+        name: my-first-container
+        image:  docker.io/httpd:2-alpine
+        state: started
+

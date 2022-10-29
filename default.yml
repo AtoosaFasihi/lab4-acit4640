@@ -1,0 +1,4 @@
+---
+create_user: atousa
+copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+create_user_file: yes  
