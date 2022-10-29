@@ -12,10 +12,11 @@ After setting up the VMs successfully you need to:
   1. clone this repo
   2. Setup your ansible.cfg file and any inventory files
   3. you can test out that all the set ups are correst by running the command ```ansible-inventory --graph```: which should look like something like below. 
+  
   ![Capture](https://user-images.githubusercontent.com/71790429/198816010-d0a55553-1cfd-40e5-b120-8c9833931b22.JPG)
   
   You can see more details about the VMs if you run ```ansible-inventory --graph --vars``` as shown below:
   
-    ![Cap](https://user-images.githubusercontent.com/71790429/198816068-3fd5c780-dca1-4f27-9317-0bce14578772.JPG)
+  ![Cap](https://user-images.githubusercontent.com/71790429/198816219-8cf3af0c-e130-4a47-b002-1d0fbdf2d9de.JPG)
 
   4. To test out the ansible playbook you can run ```ansible-playbook playbook.yml```  
